@@ -3,3 +3,6 @@
 ################################################################################
 
 /PizzaAPITest/bin/Debug/netcoreapp3.1
+/PizzaAPITest/obj
+/PizzaEntities/bin/Debug/netcoreapp3.1
+/PizzaEntities/obj

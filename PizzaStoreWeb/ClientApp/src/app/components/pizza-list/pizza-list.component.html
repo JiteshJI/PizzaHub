@@ -1,0 +1,30 @@
+<div class="row" [formGroup]="group">
+  <div class="col-md-12">
+    <div class="PizzaList">
+      <div class="PizzaList__title">
+        <h2>
+          Pizzas order
+        </h2>
+      </div>
+      <div class="PizzaList__content" formArrayName="pizzas" style="overflow:scroll;height:290px;">
+        <div class="PizzaList__item"
+             *ngFor="let pizza of pizzasArray.controls; let i = index;"
+             [ngClass]="getPizzaListItemClassStates(pizza, i)"
+             (click)="pizzaSelected.emit(i)"
+             [formGroup]="pizza">
+          <span>
+            {{getPizzaTitle(pizza.value)}}
+          </span>
+          <div class="PizzaList__item">Total Price: {{totalPriceForAllItem}}</div>
+          <button mat-icon-button (click)="deletePizza.emit(i); $event.stopPropagation()">
+            <mat-icon class="PizzaList__item__icon">remove_circle</mat-icon>
+          </button>
+          <div><img src="{{getImage(pizza.value)}}" style="width:58px;"><img/></div>
+        </div>
+        <div class="PizzaList__item PizzaList__item--add" (click)="addPizza.emit()">
+          <mat-icon class="PizzaList__item__icon">add_circle</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
